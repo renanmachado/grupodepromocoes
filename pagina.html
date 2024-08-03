@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/navigo@7/dist/navigo.min.js"></script>
-
     <title>Grupo de Promoções</title>
     <style>
         body {
@@ -50,28 +48,58 @@
             line-height: 1.6;
         }
 
+        .categories {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .categories h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-item {
+            margin: 10px;
+            text-align: center;
+        }
+
+        .category-item img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .category-item p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+
         .cta-button {
             display: inline-block;
-            background-color: #4CAF50;
-            color: white;
             padding: 15px 30px;
             font-size: 1.2em;
             text-decoration: none;
             margin-top: 20px;
             border-radius: 5px;
+            background: linear-gradient(45deg, #00bfff, #32cd32);
+            color: white;
         }
 
         .cta-button:hover {
-            background-color: #45a049;
+            background: linear-gradient(45deg, #32cd32, #00bfff);
         }
 
         .benefits,
         .offers-posted,
         .advantages,
         .stores,
-        .testimonials,
-        .gallery,
-        .faq,
         .telegram-group,
         .whatsapp-group {
             margin: 40px 0;
@@ -81,9 +109,6 @@
         .offers-posted h3,
         .advantages h3,
         .stores h3,
-        .testimonials h3,
-        .gallery h3,
-        .faq h3,
         .telegram-group h3,
         .whatsapp-group h3 {
             font-size: 1.8em;
@@ -112,66 +137,81 @@
             margin-right: 10px;
         }
 
-        .offers-posted p,
-        .testimonials blockquote,
-        .faq p,
+        .telegram-group,
+        .whatsapp-group {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
         .telegram-group p,
         .whatsapp-group p {
             font-size: 1.2em;
-            color: #666;
+            color: #333;
             line-height: 1.6;
             margin: 20px auto;
             max-width: 800px;
         }
 
-        .testimonials blockquote {
-            padding: 10px 20px;
-            border-left: 5px solid #4CAF50;
-        }
-
-        .testimonials blockquote cite {
-            display: block;
-            text-align: right;
-            margin-top: 10px;
-            font-style: normal;
-            color: #333;
+        .telegram-group p.cta-description,
+        .whatsapp-group p.cta-description {
             font-weight: bold;
+            font-size: 1.4em;
+            margin-bottom: 20px;
         }
 
-        .gallery {
+        .telegram-group .cta-button,
+        .whatsapp-group .cta-button {
+            background: linear-gradient(45deg, #0088cc, #00bfff);
+            color: white;
+        }
+
+        .telegram-group .cta-button:hover,
+        .whatsapp-group .cta-button:hover {
+            background: linear-gradient(45deg, #00bfff, #0088cc);
+        }
+
+        .offers-posted {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
         }
 
-        .gallery img {
-            max-width: 100%;
+        .offers-posted .category {
+            width: 150px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .offers-posted .category img {
+            width: 100%;
             height: auto;
-            margin: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            margin-bottom: 10px;
         }
 
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .stores ul {
-            list-style: none;
-            padding: 0;
+        .stores {
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
-        }
-
-        .stores li {
-            margin: 10px;
+            justify-content: space-around;
         }
 
         .stores img {
-            max-width: 150px;
-            height: auto;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq {
+            margin: 40px 0;
+        }
+
+        .faq h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #4CAF50;
         }
 
         .faq ul {
@@ -186,93 +226,54 @@
         .faq li h4 {
             font-size: 1.4em;
             margin-bottom: 10px;
+            color: #333;
         }
 
-        .telegram-group,
-        .whatsapp-group {
-            text-align: center;
+        .faq li p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
         }
+
 
         .footer {
             background-color: #333;
             color: white;
-            padding: 10px 0;
+            padding: 20px 0;
             text-align: center;
             margin-top: 40px;
         }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-            }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-            .content h2,
-            .benefits h3,
-            .offers-posted h3,
-            .advantages h3,
-            .stores h3,
-            .testimonials h3,
-            .gallery h3,
-            .faq h3,
-            .telegram-group h3,
-            .whatsapp-group h3 {
-                font-size: 1.5em;
-            }
+        .footer ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
 
-            .content p,
-            .benefits li,
-            .advantages li,
-            .offers-posted p,
-            .testimonials blockquote,
-            .faq p,
-            .telegram-group p,
-            .whatsapp-group p {
-                font-size: 1em;
-            }
+        .footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-            .cta-button {
-                padding: 10px 20px;
-                font-size: 1em;
-            }
+        .footer ul li a:hover {
+            text-decoration: underline;
+        }
 
-            .gallery {
-                flex-direction: column;
-            }
-
-            .gallery img {
-                width: 90%;
-                margin: 10px auto;
-            }
-
-            .stores ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .stores img {
-                max-width: 120px;
-            }
+        .footer p {
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div id="app"></div>
-    <script>
-        const router = new Navigo();
-
-        router
-            .on('/', () => {
-                // Renderiza a página inicial
-            })
-            .on('/sobre', () => {
-                // Renderiza a página sobre
-            })
-            .resolve();
-    </script>
     <div class="header">
         <div class="container">
-            <h1>Inscreva-se no nosso Grupo de Promoções!</h1>
+            <h1>Grupo de Promoções</h1>
         </div>
     </div>
 
@@ -293,40 +294,115 @@
             </ul>
         </div>
 
-        <div class="offers-posted">
-            <h3>Ofertas Postadas</h3>
-            <p>Diariamente, postamos ofertas imperdíveis em diversas categorias, desde eletrônicos até moda e alimentos. Nossos grupos são atualizados constantemente para garantir que você não perca nenhuma oportunidade de economizar.</p>
+        <div class="telegram-group">
+            <h3>Grupo de Promoções no Telegram</h3>
+            <p class="cta-description">Entre no nosso grupo do Telegram e seja o primeiro a receber as melhores promoções.</p>
+            <p>Com o nosso grupo no Telegram, você terá acesso rápido e fácil às ofertas mais recentes, cupons exclusivos, e ainda poderá interagir com outros caçadores de promoções.</p>
+            <a href="https://linkdotelegram.com" class="cta-button">Entrar no Grupo do Telegram</a>
         </div>
 
-        <div class="advantages">
-            <h3>Vantagens de Utilizar o Grupo</h3>
-            <ul>
-                <li>Receba notificações instantâneas de novas ofertas</li>
-                <li>Filtros de categorias para encontrar o que você precisa</li>
-                <li>Suporte rápido e eficiente para dúvidas e consultas</li>
-                <li>Acesso a promoções exclusivas de grandes lojas</li>
-            </ul>
+        <div class="whatsapp-group">
+            <h3>Grupo de Promoções no WhatsApp</h3>
+            <p class="cta-description">Receba ofertas no seu WhatsApp em tempo real.</p>
+            <p>Se preferir o WhatsApp, não se preocupe! Temos um grupo exclusivo para compartilhar as melhores ofertas com você, garantindo que você não perca nenhuma promoção importante.</p>
+            <a href="https://linkdowanp.com" class="cta-button">Entrar no Grupo do WhatsApp</a>
         </div>
+
+        <div class="categories">
+            <h3>Categorias de Ofertas</h3>
+            <div class="category-list">
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100/4CAF50/ffffff?text=Eletrônicos" alt="Eletrônicos">
+                    <p>Eletrônicos</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100/4CAF50/ffffff?text=Moda" alt="Moda">
+                    <p>Moda</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100/4CAF50/ffffff?text=Beleza" alt="Beleza">
+                    <p>Beleza</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100/4CAF50/ffffff?text=Casa" alt="Casa">
+                    <p>Casa</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100/4CAF50/ffffff?text=Esportes" alt="Esportes">
+                    <p>Esportes</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100/4CAF50/ffffff?text=Alimentos" alt="Alimentos">
+                    <p>Alimentos</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100/4CAF50/ffffff?text=Saúde" alt="Saúde">
+                    <p>Saúde</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/100/4CAF50/ffffff?text=Livros" alt="Livros">
+                    <p>Livros</p>
+                </div>
+            </div>
+        </div>
+
 
         <div class="stores">
-            <h3>Quais Lojas Fazem Parte do Nosso Grupo</h3>
+            <h3>Ofertas +150 Lojas</h3>
+            <img src="img/amazon.jpg" alt="Amazon">
+            <img src="img/mercado-livre.jpg" alt="Mercado Livre">
+            <img src="img/shopee.jpg" alt="Shopee">
+            <img src="img/magazine-luiza.jpg" alt="Magazine Luiza">
+            <img src="img/americanas.jpg" alt="Americanas">
+            <img src="img/carrefour.jpg" alt="Carrefour">
+            <img src="img/casas-bahia.jpg" alt="Casas Bahia">
+            <img src="img/ponto-frio.jpg" alt="Ponto Frio">
+            <img src="img/netshoes.jpg" alt="Netshoes">
+            <img src="img/kabum.jpg" alt="Kabum">
+            <img src="img/asics.jpg" alt="Asics">
+            <img src="img/natura.jpg" alt="Natura">
+            <img src="img/centauro.jpg" alt="Centauro">
+            <img src="img/aliexpress.jpg" alt="aliexpress">
+        </div>
+        <div class="faq">
+            <h3>Perguntas Frequentes</h3>
             <ul>
-                <li><img src="https://via.placeholder.com/150" alt="Logo Amazon"></li>
-                <li><img src="https://via.placeholder.com/150" alt="Logo Magazine Luiza"></li>
-                <li><img src="https://via.placeholder.com/150" alt="Logo Americanas"></li>
-                <li><img src="https://via.placeholder.com/150" alt="Logo Submarino"></li>
-                <li><img src="https://via.placeholder.com/150" alt="Logo Carrefour"></li>
-                <li><img src="https://via.placeholder.com/150" alt="Logo Casas Bahia"></li>
-                <li><img src="https://via.placeholder.com/150" alt="Logo Shoptime"></li>
+                <li>
+                    <h4>Como posso participar do grupo?</h4>
+                    <p>Para participar, clique no link de convite para o nosso grupo no Telegram ou WhatsApp e siga as instruções.</p>
+                </li>
+                <li>
+                    <h4>Quais tipos de ofertas são compartilhadas?</h4>
+                    <p>Compartilhamos ofertas em diversas categorias, incluindo eletrônicos, moda, beleza, alimentos e muito mais.</p>
+                </li>
+                <li>
+                    <h4>Como recebo as ofertas?</h4>
+                    <p>As ofertas são enviadas diretamente para você através de mensagens no grupo. Você pode visualizar as ofertas a qualquer momento.</p>
+                </li>
+                <li>
+                    <h4>Posso compartilhar ofertas com amigos?</h4>
+                    <p>Sim! Sinta-se à vontade para compartilhar as ofertas com seus amigos e familiares.</p>
+                </li>
+                <li>
+                    <h4>O grupo é gratuito?</h4>
+                    <p>Sim, a participação no grupo é totalmente gratuita. Apenas os descontos e ofertas são exclusivos para membros.</p>
+                </li>
             </ul>
         </div>
+    </div>
 
-        <div class="testimonials">
-            <h3>O que Nossos Membros Dizem</h3>
-            <blockquote>
-                "Desde que entrei no grupo, já economizei bastante nas minhas compras. As ofertas são incríveis e chegam sempre em primeira mão!"
-                <cite>- Maria S.</cite>
-            </blockquote>
-            <blockquote>
-                "Os cupons e promoções que recebo são muito úteis. Recomendo a todos que queiram economizar sem esforço."
-                <cite>- João P.</cite>
+    <div class="footer">
+        <div class="container">
+            <ul>
+                <li><a href="https://www.uol.com.br">UOL</a></li>
+                <li><a href="https://www.globo.com">Globo</a></li>
+                <li><a href="https://www.terra.com.br">Terra</a></li>
+                <li><a href="https://www.bol.com.br">BOL</a></li>
+                <li><a href="https://www.r7.com">R7</a></li>
+            </ul>
+            <p>&copy; 2024 Grupo de Promoções. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</body>
+
+</html>
