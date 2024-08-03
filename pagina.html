@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/navigo@7/dist/navigo.min.js"></script>
+
+    <title>Grupo de Promoções</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+
+        .benefits,
+        .offers-posted,
+        .advantages,
+        .stores,
+        .testimonials,
+        .gallery,
+        .faq,
+        .telegram-group,
+        .whatsapp-group {
+            margin: 40px 0;
+        }
+
+        .benefits h3,
+        .offers-posted h3,
+        .advantages h3,
+        .stores h3,
+        .testimonials h3,
+        .gallery h3,
+        .faq h3,
+        .telegram-group h3,
+        .whatsapp-group h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .benefits ul,
+        .advantages ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .benefits li,
+        .advantages li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefits li::before,
+        .advantages li::before {
+            content: '✔';
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .offers-posted p,
+        .testimonials blockquote,
+        .faq p,
+        .telegram-group p,
+        .whatsapp-group p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .testimonials blockquote {
+            padding: 10px 20px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .testimonials blockquote cite {
+            display: block;
+            text-align: right;
+            margin-top: 10px;
+            font-style: normal;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .stores ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .stores li {
+            margin: 10px;
+        }
+
+        .stores img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .faq ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .faq li {
+            margin-bottom: 20px;
+        }
+
+        .faq li h4 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .telegram-group,
+        .whatsapp-group {
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content h2,
+            .benefits h3,
+            .offers-posted h3,
+            .advantages h3,
+            .stores h3,
+            .testimonials h3,
+            .gallery h3,
+            .faq h3,
+            .telegram-group h3,
+            .whatsapp-group h3 {
+                font-size: 1.5em;
+            }
+
+            .content p,
+            .benefits li,
+            .advantages li,
+            .offers-posted p,
+            .testimonials blockquote,
+            .faq p,
+            .telegram-group p,
+            .whatsapp-group p {
+                font-size: 1em;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .gallery {
+                flex-direction: column;
+            }
+
+            .gallery img {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            .stores ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stores img {
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        const router = new Navigo();
+
+        router
+            .on('/', () => {
+                // Renderiza a página inicial
+            })
+            .on('/sobre', () => {
+                // Renderiza a página sobre
+            })
+            .resolve();
+    </script>
+    <div class="header">
+        <div class="container">
+            <h1>Inscreva-se no nosso Grupo de Promoções!</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h2>Receba as melhores ofertas em primeira mão</h2>
+            <p>Junte-se ao nosso grupo de promoções e aproveite descontos exclusivos, cupons e ofertas especiais em diversos produtos. Economize nas suas compras e fique por dentro das novidades!</p>
+            <a href="https://linkdosuogrupo.com" class="cta-button">Entrar no Grupo Agora</a>
+        </div>
+
+        <div class="benefits">
+            <h3>Vantagens de Participar dos Grupos de Ofertas</h3>
+            <ul>
+                <li>Descontos exclusivos em produtos populares</li>
+                <li>Cupons enviados diretamente para o seu celular</li>
+                <li>Acesso antecipado às melhores ofertas</li>
+                <li>Economia garantida nas suas compras online</li>
+            </ul>
+        </div>
+
+        <div class="offers-posted">
+            <h3>Ofertas Postadas</h3>
+            <p>Diariamente, postamos ofertas imperdíveis em diversas categorias, desde eletrônicos até moda e alimentos. Nossos grupos são atualizados constantemente para garantir que você não perca nenhuma oportunidade de economizar.</p>
+        </div>
+
+        <div class="advantages">
+            <h3>Vantagens de Utilizar o Grupo</h3>
+            <ul>
+                <li>Receba notificações instantâneas de novas ofertas</li>
+                <li>Filtros de categorias para encontrar o que você precisa</li>
+                <li>Suporte rápido e eficiente para dúvidas e consultas</li>
+                <li>Acesso a promoções exclusivas de grandes lojas</li>
+            </ul>
+        </div>
+
+        <div class="stores">
+            <h3>Quais Lojas Fazem Parte do Nosso Grupo</h3>
+            <ul>
+                <li><img src="https://via.placeholder.com/150" alt="Logo Amazon"></li>
+                <li><img src="https://via.placeholder.com/150" alt="Logo Magazine Luiza"></li>
+                <li><img src="https://via.placeholder.com/150" alt="Logo Americanas"></li>
+                <li><img src="https://via.placeholder.com/150" alt="Logo Submarino"></li>
+                <li><img src="https://via.placeholder.com/150" alt="Logo Carrefour"></li>
+                <li><img src="https://via.placeholder.com/150" alt="Logo Casas Bahia"></li>
+                <li><img src="https://via.placeholder.com/150" alt="Logo Shoptime"></li>
+            </ul>
+        </div>
+
+        <div class="testimonials">
+            <h3>O que Nossos Membros Dizem</h3>
+            <blockquote>
+                "Desde que entrei no grupo, já economizei bastante nas minhas compras. As ofertas são incríveis e chegam sempre em primeira mão!"
+                <cite>- Maria S.</cite>
+            </blockquote>
+            <blockquote>
+                "Os cupons e promoções que recebo são muito úteis. Recomendo a todos que queiram economizar sem esforço."
+                <cite>- João P.</cite>
